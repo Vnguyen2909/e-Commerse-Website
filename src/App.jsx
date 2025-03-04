@@ -1,15 +1,11 @@
-import { useState } from "react";
-import MainLayout from "./components/Layout/Layout";
-import MyHeader from "./components/Header/Header";
+// import MyButton from "./components/Button/Button";
+
+import HomePage from "@components/HomePage/HomePage";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <MainLayout>
-        <MyHeader>Content</MyHeader>
-      </MainLayout>
+      <HomePage />
     </>
   );
 }
