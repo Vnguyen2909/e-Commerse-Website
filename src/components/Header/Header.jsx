@@ -2,7 +2,7 @@ import BoxIcon from "./Boxicon/Boxicon";
 import styles from "./styles.module.scss";
 import { dataBoxIcon, dataMenu } from "./constants";
 import Menu from "./Menu/Menu";
-import Logo from "@icons/images/logo.png";
+import Logo from "@icons/images/logo1.png";
 
 function MyHeader() {
   const {
@@ -31,7 +31,7 @@ function MyHeader() {
           </div>
         </div>
         <div className={containerLogo}>
-          <img src={Logo} alt="Logo" style={{ width: "18%" }} />
+          <img src={Logo} alt="Logo" style={{ width: "50%" }} />
         </div>
         <div className={containerBox}>
           <div className={containerMenu}>

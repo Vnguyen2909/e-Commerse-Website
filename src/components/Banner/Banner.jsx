@@ -7,9 +7,9 @@ function Banner() {
   return (
     <div className={container}>
       <div className={content}>
-        <h1 className={title}>Store Nguyen Vi</h1>
+        <h1 className={title}>XStore Marseille</h1>
         <div className={des}>
-          Make skdsjd dksdksdjskd ksdjsdk skdjskdjsdk sdkjsd ksdj sdkj sdkj
+          Make yours celebrations even more special this years with beautiful.
         </div>
         <Button content={"Go to shop"} />
       </div>

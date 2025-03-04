@@ -3,10 +3,11 @@
 
 .container {
     @include flex_box_custom(center, center, 0px);
-    background-image: url(../../assets/images/banner1.png);
+    background-image: url(../../assets/images/Banner.jpeg);
     min-height: 750px;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 
 .content{
