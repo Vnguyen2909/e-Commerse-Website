@@ -2,9 +2,9 @@
 @use '@styles/variables.module.scss' as *;
 
 .container {
-    height: 144px;
+    height: 124px;
     background-color: $primary_color;
-    margin-top: -75px;
+    margin-top: -100px;
     padding: 20px 55px;
     @include flex_box_custom(space-between, center, 0px)
 }

@@ -1,0 +1,22 @@
+@use '@styles/mixins.module.scss' as *;
+@use '@styles/variables.module.scss' as *;
+
+.container {
+    background-image: url("src/assets/images/CDbanner.png");
+    width: calc(100%/2.1);
+    height: 409px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.containerTimer{
+    @include flex_box_custom(center, center, 10px)
+}
+
+.title{
+    font-size: 28px;
+    color: $tour_color;
+    font-weight: 400;
+    margin-bottom: 5px;
+    text-align: center;
+}
