@@ -9,14 +9,15 @@ function HomePage() {
   const { container } = styles;
   return (
     <>
-      <div className={container}>
-        <MyHeader />
-        <Banner />
-        <Info />
-        <AdvanceHeadling />
-        <HeadlingListProduct />
-      </div>
+      <MyHeader />
+      <Banner />
+      <Info />
+      <AdvanceHeadling />
+      <HeadlingListProduct />
     </>
+    // <div className={container}>
+
+    // </div>
   );
 }
 

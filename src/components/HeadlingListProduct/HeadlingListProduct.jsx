@@ -1,20 +1,17 @@
-import CountdownTimer from "@components/CountdownTimer/CountdownTimer";
 import MainLayout from "@components/Layout/Layout";
 import styles from "./styles.module.scss";
 import CountdownBanner from "../CountdownBanner/CountdownBanner";
+import ProductItem from "../ProductItem/ProductItem";
 
 function HeadlingListProduct() {
-  const targetDate = "2025-03-07";
-  const { container, conatinerTimer } = styles;
+  const { container, containerTimer } = styles;
   return (
     <MainLayout>
-      {/* {<CountdownTimer targetDate={targetDate} />} */}
       <div className={container}>
         <CountdownBanner />
-        <div>Count down</div>
-        <div className={conatinerTimer}>
-          <div>1</div>
-          <div>2</div>
+        <div className={containerTimer}>
+          <ProductItem />
+          <ProductItem />
         </div>
       </div>
     </MainLayout>
