@@ -3,15 +3,22 @@ import styles from "./styles.module.scss";
 import CountdownBanner from "../CountdownBanner/CountdownBanner";
 import ProductItem from "../ProductItem/ProductItem";
 
-function HeadlingListProduct() {
+function HeadlingListProduct({ data }) {
   const { container, containerTimer } = styles;
   return (
     <MainLayout>
       <div className={container}>
         <CountdownBanner />
         <div className={containerTimer}>
-          <ProductItem />
-          <ProductItem />
+          {data.map((item, index) => (
+            <ProductItem
+              key={item.id || index}
+              src={item.images[2]}
+              prevSrc={item.images[1]}
+              name={item.name}
+              price={item.price}
+            />
+          ))}
         </div>
       </div>
     </MainLayout>
