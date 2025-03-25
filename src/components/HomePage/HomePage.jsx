@@ -6,6 +6,7 @@ import HeadlingListProduct from "../HeadlingListProduct/HeadlingListProduct";
 import { useEffect, useState } from "react";
 import { getProduct } from "@/apis/productService";
 import PopularProduct from "../popularProduct/popularProduct";
+import SaleHomePgae from "../SaleHomepage/SaleHomepage";
 
 function HomePage() {
   const [ListProducts, setListProducts] = useState([]);
@@ -23,6 +24,7 @@ function HomePage() {
       <AdvanceHeadling />
       <HeadlingListProduct data={ListProducts.slice(0, 2)} />
       <PopularProduct data={ListProducts.slice(2, ListProducts.length)} />
+      <SaleHomePgae />
     </>
     // <div className={container}>
 
