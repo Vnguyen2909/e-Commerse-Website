@@ -4,7 +4,7 @@ import Button from "@components/Button/Button";
 
 function CountdownBanner() {
   const { container, containerTimer, title, boxBtn } = styles;
-  const targetDate = "2025-03-30";
+  const targetDate = "2025-05-30";
   return (
     <div className={container}>
       <div className={containerTimer}>

@@ -1,7 +1,9 @@
 import styles from "./styles.module.scss";
-import eyeicon from "@icons/svgs/eye.svg";
-import hearticon from "@icons/svgs/heart.svg";
-import carticon from "@icons/svgs/cart.svg";
+import { HiOutlineEye } from "react-icons/hi2";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { CiShoppingCart } from "react-icons/ci";
+import { BsBag } from "react-icons/bs";
+import { TfiReload } from "react-icons/tfi";
 import reloadicon from "@icons/svgs/reload.svg";
 
 function ProductItem({ src, prevSrc, name, price }) {
@@ -21,16 +23,16 @@ function ProductItem({ src, prevSrc, name, price }) {
         <img src={prevSrc} alt="" className={showImgWhenHover} />
         <div className={showFncWhenHover}>
           <div className={boxIcon}>
-            <img src={eyeicon} alt="" />
+            <IoMdHeartEmpty />
           </div>
           <div className={boxIcon}>
-            <img src={eyeicon} alt="" />
+            <BsBag />
           </div>
           <div className={boxIcon}>
-            <img src={eyeicon} alt="" />
+            <TfiReload />
           </div>
           <div className={boxIcon}>
-            <img src={eyeicon} alt="" />
+            <HiOutlineEye />
           </div>
         </div>
       </div>

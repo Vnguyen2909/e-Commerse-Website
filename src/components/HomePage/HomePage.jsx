@@ -15,7 +15,7 @@ function HomePage() {
       setListProducts(res.contents);
     });
   }, []);
-  console.log(ListProducts);
+  // console.log(ListProducts);
   return (
     <>
       <MyHeader />

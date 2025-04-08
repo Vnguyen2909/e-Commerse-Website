@@ -1,20 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import Button from "@components/Button/Button";
-import useTranslateXImage from "./TranslateXimage";
+import useTranslateXImage from "@hooks/useTranslateXimage";
 
 function SaleHomePgae() {
   const { container, title, des, boxBtn, boxImg, imgsale } = styles;
 
-  const { translateXPosition, HandleTranslateX, scrollPosition } =
-    useTranslateXImage();
-
-  useEffect(() => {
-    HandleTranslateX();
-  }, [scrollPosition]);
-
-  // console.log(scrollDriction);
-  // console.log(translateXPosition);
+  const { translateXPosition } = useTranslateXImage();
 
   return (
     <div className={container}>

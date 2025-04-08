@@ -3,6 +3,7 @@ import fbicon from "@icons/svgs/faecbook.svg";
 import insicon from "@icons/svgs/instagram.svg";
 import hearticon from "@icons/svgs/heart.svg";
 import carticon from "@icons/svgs/cart.svg";
+import { PiShoppingCartThin } from "react-icons/pi";
 import reloadicon from "@icons/svgs/reload.svg";
 
 function BoxIcon({ type, href }) {

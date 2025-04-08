@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 
 function PopularProduct({ data }) {
   const { container } = styles;
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <MainLayout>
