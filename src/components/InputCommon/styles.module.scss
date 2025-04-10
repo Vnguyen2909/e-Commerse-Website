@@ -8,20 +8,22 @@
     }
     
     .boxInput{
-        width: 100%;
         position: relative;
-
         input {
             width: 100%;
             border: 1px solid #e1e1e1;
             outline: none;
             padding: 10px 0px 10px 10px;
+            box-sizing: border-box;
         }
         .boxIcon{
             position: absolute;
             top: 12px;
-            right: 0;
+            right: 5px;
             cursor: pointer;
+        }
+        .errMsg{
+            color: red;
         }
     } 
 }

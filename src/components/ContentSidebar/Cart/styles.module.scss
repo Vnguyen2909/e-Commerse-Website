@@ -6,13 +6,17 @@
     @include flex_box_custom(space-between, unset, 0);
     flex-direction: column;
   
-    .boxContent {
-      width: 100%;
+    // .boxContent {
+    //   width: 100%;
+    // }
+
+    .total{
+      @include flex_box_custom(space-between, center, 0);
     }
   
-    .container_BtnCompare {
+    .container_BtnCart {
       width: 100%;
-      @include flex_box_custom(center, center, 0);
+      @include flex_box_custom(space-between, center, 0);
       margin-bottom: 40px;
     }
 }

@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import Button from "@components/Button/Button";
 import useTranslateXImage from "@hooks/useTranslateXimage";
 
-function SaleHomePgae() {
+function SaleHomePage() {
   const { container, title, des, boxBtn, boxImg, imgsale } = styles;
 
   const { translateXPosition } = useTranslateXImage();
@@ -29,7 +29,12 @@ function SaleHomePgae() {
           Libero sed faucibus facilisis fermentum. Est nibh sed massa sodales.
         </p>
         <div>
-          <Button content={"Read more"} isPrimary={false} className={boxBtn} />
+          <Button
+            content={"Read more"}
+            isPrimary={false}
+            className={boxBtn}
+            size="small"
+          />
         </div>
       </div>
       <div
@@ -49,4 +54,4 @@ function SaleHomePgae() {
   );
 }
 
-export default SaleHomePgae;
+export default SaleHomePage;

@@ -2,7 +2,7 @@ import Button from "../Button/Button";
 import styles from "./styles.module.scss";
 
 function Banner() {
-  const { container, content, title, des } = styles;
+  const { container, content, title, des, btnBanner } = styles;
 
   return (
     <div className={container}>
@@ -11,7 +11,7 @@ function Banner() {
         <div className={des}>
           Make yours celebrations even more special this years with beautiful.
         </div>
-        <Button content={"Go to shop"} />
+        <Button className={btnBanner} size="small" content={"Go to shop"} />
       </div>
     </div>
   );

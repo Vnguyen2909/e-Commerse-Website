@@ -2,7 +2,6 @@
 @use '@styles/variables.module.scss' as *;
 .container{
     padding: 30px 20px 0px 20px;
-
     .title{
         font-size: 18px;
         text-align: center;
@@ -11,6 +10,7 @@
 
     .boxRememberMe{
         margin-bottom: 30px;
+        width: 100%;
         input{
             margin-right: 10px;
         }
@@ -21,6 +21,7 @@
     }
 
     .container_Btnlogin{
-        @include flex_box_custom(center, center, 10px)
+        @include flex_box_custom(center, center, 10px);
+        margin-bottom: 8px;
     }
 }
