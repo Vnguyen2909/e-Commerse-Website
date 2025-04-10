@@ -3,9 +3,10 @@ import styles from "./styles.module.scss";
 import Button from "@components/Button/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ToastContext } from "@/contexts/ToastProvider";
-import { register } from "@/apis/authService";
+import { register, signIn, getInfo } from "@/apis/authService";
+import Cookies from "js-cookie";
 
 function Login() {
   const { container, title, boxRememberMe, container_Btnlogin } = styles;
@@ -30,10 +31,9 @@ function Login() {
       ),
     }),
     onSubmit: async (values) => {
-      // console.log(values);
       if (isLoading) return;
-      if (register) {
-        const { email: username, password } = values;
+      const { email: username, password } = values;
+      if (isRegister) {
         setIsLoading(true);
         await register({ username, password })
           .then((res) => {
@@ -46,15 +46,32 @@ function Login() {
             toast.error(err.response.data.message);
             setIsLoading(false);
           });
+      } else if (!isRegister) {
+        await signIn({ username, password })
+          .then((res) => {
+            setIsLoading(false);
+            const { id, token, refreshToken } = res.data;
+            Cookies.set("token", token);
+            Cookies.set("refreshToken", refreshToken);
+          })
+          .cath((err) => {
+            console.log(err);
+            // toast.error(err.response.data.message);
+            setIsLoading(false);
+          });
       }
     },
   });
 
-  console.log(formik.errors);
+  // console.log(formik.errors);
   const handleToggle = () => {
     setIsRegister(!isRegister);
     formik.resetForm();
   };
+
+  useEffect(() => {
+    getInfo();
+  }, []);
 
   return (
     <div className={container}>
