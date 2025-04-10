@@ -1,13 +1,17 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styles from "../styles.module.scss";
 import { SidebarContext } from "@/contexts/SidebarProvider";
+import { StoreContext } from "@/contexts/storeProvider";
+import Cookies from "js-cookie";
 
 function Menu({ content, href }) {
-  const { menu } = styles;
+  const { menu, subMenu } = styles;
   const { setIsOpen, setType } = useContext(SidebarContext);
+  const { userInfo, handelLogOut } = useContext(StoreContext);
+  const [isShowSubMenu, setIsShowSubMenu] = useState(false);
 
   const handelClickShowMenu = () => {
-    if (content === "Sign in") {
+    if (content === "Sign in" && !userInfo) {
       setIsOpen(true);
       setType("login");
     } else if (content === "Contacts") {
@@ -15,9 +19,38 @@ function Menu({ content, href }) {
       setType("contact");
     }
   };
+
+  const handelRenderText = (content) => {
+    if (content === "Sign in" && userInfo) {
+      return `Hello: ${userInfo?.username}`;
+    } else {
+      return content;
+    }
+  };
+
+  const handelHover = () => {
+    console.log(content);
+    if (content === "Sign in" && userInfo) {
+      setIsShowSubMenu(true);
+    }
+  };
+
   return (
-    <div className={menu} onClick={handelClickShowMenu}>
-      {content}
+    <div
+      className={menu}
+      onClick={handelClickShowMenu}
+      onMouseEnter={handelHover}
+    >
+      {handelRenderText(content)}
+      {isShowSubMenu && (
+        <div
+          className={subMenu}
+          onMouseLeave={() => setIsShowSubMenu(false)}
+          onClick={handelLogOut}
+        >
+          Log out
+        </div>
+      )}
     </div>
   );
 }
