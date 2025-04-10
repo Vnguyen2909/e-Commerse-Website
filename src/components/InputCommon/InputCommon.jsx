@@ -28,7 +28,7 @@ function InputCommon({ label, type, isRequire = false, ...props }) {
           {...props}
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
-          value={formik.values[id]}
+          value={formik.values[id] || ""}
         />
         {isPassword && (
           <div className={boxIcon} onClick={handleShowPassword}>
