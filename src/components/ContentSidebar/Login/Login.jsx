@@ -41,19 +41,23 @@ function Login() {
         setIsLoading(true);
         await register({ username, password })
           .then((res) => {
-            console.log(res);
-            toast.success(res.data.message);
-            setIsLoading(false);
+            toast.success(res.data.message || "Register success");
+            setIsRegister(false);
+            formik.resetForm();
           })
           .catch((err) => {
-            console.log(err);
-            toast.error(err.response.data.message);
+            console.error("Error response:", err.response);
+            toast.error(err?.response?.data?.message || "Register failed");
             setIsLoading(false);
           });
       } else if (!isRegister) {
         await signIn({ username, password })
           .then((res) => {
             setIsLoading(false);
+            if (!res || !res.data) {
+              toast.error("Unexpected response from server");
+              return;
+            }
             const { id, token, refreshToken } = res.data;
             setUserId(id);
             Cookies.set("token", token);
@@ -117,7 +121,6 @@ function Login() {
               isLoading ? "Loading..." : isRegister ? "Register" : "Login"
             }
             type="submit"
-            // onClick={() => toast.success("Login Success")}
           />
         </div>
       </form>

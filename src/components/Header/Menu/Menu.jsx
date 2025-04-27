@@ -3,12 +3,14 @@ import styles from "../styles.module.scss";
 import { SidebarContext } from "@/contexts/SidebarProvider";
 import { StoreContext } from "@/contexts/storeProvider";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 function Menu({ content, href }) {
   const { menu, subMenu } = styles;
   const { setIsOpen, setType } = useContext(SidebarContext);
   const { userInfo, handelLogOut } = useContext(StoreContext);
   const [isShowSubMenu, setIsShowSubMenu] = useState(false);
+  const navigate = useNavigate();
 
   const handelClickShowMenu = () => {
     if (content === "Sign in" && !userInfo) {
@@ -17,6 +19,10 @@ function Menu({ content, href }) {
     } else if (content === "Contacts") {
       setIsOpen(true);
       setType("contact");
+    }
+
+    if (content === "Our Shop") {
+      navigate("/OurShop");
     }
   };
 
