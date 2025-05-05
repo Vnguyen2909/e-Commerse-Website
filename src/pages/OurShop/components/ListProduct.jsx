@@ -6,11 +6,11 @@ import styles from "../styles.module.scss";
 
 function ListProducts() {
   const { containerProduct } = styles;
-  const { products } = useContext(OurShopContext);
+  const { products, isShowGrid } = useContext(OurShopContext);
   return (
     <>
       <MainLayout>
-        <div className={containerProduct}>
+        <div className={isShowGrid ? containerProduct : ""}>
           {products.map((item, index) => (
             <ProductItem
               key={item.id || index}
@@ -18,6 +18,8 @@ function ListProducts() {
               prevSrc={item.images[1]}
               name={item.name}
               price={item.price}
+              details={item}
+              isHomepage={false}
             />
           ))}
         </div>
