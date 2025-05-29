@@ -1,14 +1,17 @@
 import styles from "./styles.module.scss";
 import { HiOutlineEye } from "react-icons/hi2";
 import { IoMdHeartEmpty } from "react-icons/io";
-import { CiShoppingCart } from "react-icons/ci";
 import { BsBag } from "react-icons/bs";
 import { TfiReload } from "react-icons/tfi";
-import reloadicon from "@icons/svgs/reload.svg";
 import cls from "classnames";
 import Button from "@components/Button/Button";
 import { useContext, useEffect, useState } from "react";
 import { OurShopContext } from "@/contexts/OurShopProvider";
+import Cookies from "js-cookie";
+import { SidebarContext } from "@/contexts/SideBarProvider";
+import { ToastContext } from "@/contexts/ToastProvider";
+import { addProductToCart } from "@/apis/cartService";
+import LoadingTextCommon from "@components/LoadingTextCommon/LoadingTextCommon";
 
 function ProductItem({
   src,
@@ -21,9 +24,13 @@ function ProductItem({
   // const { isShowGrid } = useContext(OurShopContext);
   const [sizeChoose, setSizeChoose] = useState("");
   // console.log(isShowGrid);
-
   const ourShopStore = useContext(OurShopContext);
   const [isShowGrid, setIsShowGrid] = useState(ourShopStore?.isShowGrid);
+  const userId = Cookies.get("userId");
+  const { setIsOpen, setType, handleGetListProducts } =
+    useContext(SidebarContext);
+  const { toast } = useContext(ToastContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     boxImg,
@@ -50,6 +57,45 @@ function ProductItem({
   const handleClearSize = () => {
     setSizeChoose("");
   };
+
+  const handleAddToCard = () => {
+    console.log(userId);
+    if (!userId) {
+      setIsOpen(true);
+      setType("login");
+      toast.warning("Please login to add product to cart");
+      return;
+    }
+
+    if (!sizeChoose) {
+      toast.warning("Please choose size product");
+      return;
+    }
+
+    const data = {
+      userId,
+      productId: details._id,
+      quantity: 1,
+      size: sizeChoose,
+    };
+
+    // console.log(data);
+    setIsLoading(true);
+    addProductToCart(data)
+      .then((res) => {
+        setIsOpen(true);
+        setType("cart");
+        toast.success("Add Product to cart successfully");
+        setIsLoading(false);
+        handleGetListProducts(userId, "cart");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Add Product to cart failed!");
+        setIsLoading(false);
+      });
+  };
+
   useEffect(() => {
     if (isHomepage) {
       setIsShowGrid(true);
@@ -119,7 +165,11 @@ function ProductItem({
 
         {!isHomepage && (
           <div className={boxButton}>
-            <Button content={"ADD TO CART"} size="small" />
+            <Button
+              content={isLoading ? <LoadingTextCommon /> : "ADD TO CART"}
+              onClick={handleAddToCard}
+              size="small"
+            />
           </div>
         )}
       </div>

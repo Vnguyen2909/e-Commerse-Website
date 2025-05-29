@@ -94,3 +94,22 @@
     flex-wrap: wrap;
     margin-top: 10px;
 }
+
+.sectionListProduct{
+    min-height: 800px;
+}
+
+.boxBtnLoadMore{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    Button{
+        width: 180px;
+        margin: 50px auto;
+    }
+}
+
+
+
+

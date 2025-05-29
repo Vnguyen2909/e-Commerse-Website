@@ -15,7 +15,7 @@ function SideBar() {
     setIsOpen(!isOpen);
   };
 
-  console.log(type);
+  // console.log(type);
 
   const handleRenderContent = () => {
     switch (type) {

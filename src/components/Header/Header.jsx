@@ -22,13 +22,15 @@ function MyHeader() {
     fixedHeader,
     topHeader,
     boxIcon,
+    boxCart,
+    quantity,
   } = styles;
 
   const { scrollPosition } = useScrollHandling();
 
   const [fixedPosition, setFixedPosition] = useState(false);
 
-  const { setIsOpen, setType } = useContext(SidebarContext);
+  const { setIsOpen, setType, listProductCart } = useContext(SidebarContext);
   // console.log(isOpen);
 
   const handleOpenSideBar = (type) => {
@@ -87,7 +89,11 @@ function MyHeader() {
           <div className={containerBoxIcon}>
             <TfiReload onClick={() => handleOpenSideBar("compare")} />
             <BsHeart onClick={() => handleOpenSideBar("wishlist")} />
-            <BsCart3 onClick={() => handleOpenSideBar("cart")} />
+
+            <div className={boxCart}>
+              <BsCart3 onClick={() => handleOpenSideBar("cart")} />
+              <div className={quantity}>{listProductCart.length}</div>
+            </div>
           </div>
         </div>
       </div>

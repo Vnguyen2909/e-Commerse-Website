@@ -14,8 +14,8 @@ function Filter() {
     useContext(OurShopContext);
 
   const getValueSelect = (value, type) => {
-    console.log(value);
-    console.log(type);
+    // console.log(value);
+    // console.log(type);
     if (type === "sort") {
       setSortId(value);
     } else {

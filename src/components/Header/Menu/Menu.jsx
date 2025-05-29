@@ -13,16 +13,17 @@ function Menu({ content, href }) {
   const navigate = useNavigate();
 
   const handelClickShowMenu = () => {
+    if (content === "Our Shop") {
+      navigate("/OurShop");
+    } else if (content === "Element") {
+      navigate("/");
+    }
     if (content === "Sign in" && !userInfo) {
       setIsOpen(true);
       setType("login");
     } else if (content === "Contacts") {
       setIsOpen(true);
       setType("contact");
-    }
-
-    if (content === "Our Shop") {
-      navigate("/OurShop");
     }
   };
 
@@ -35,7 +36,7 @@ function Menu({ content, href }) {
   };
 
   const handelHover = () => {
-    console.log(content);
+    // console.log(content);
     if (content === "Sign in" && userInfo) {
       setIsShowSubMenu(true);
     }
