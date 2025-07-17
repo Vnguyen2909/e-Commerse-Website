@@ -12,7 +12,7 @@ function HomePage() {
   const [ListProducts, setListProducts] = useState([]);
   useEffect(() => {
     const query = {
-      sortType: 0,
+      sortType: 0, 
       page: 1,
       limit: 10,
     };
